@@ -8,7 +8,7 @@
 #include<stdio.h>
 void classifyMarks(int marks);
 void main(){
-   int marks=;
+   int marks=23;
    classifyMarks(marks);
 }
 void classifyMarks(int marks)
