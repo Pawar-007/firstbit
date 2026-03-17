@@ -1,0 +1,129 @@
+Q1) Write an SQL query to display employee first_name and last_name with suitable column
+aliases.
+ans)
+      SELECT first_name as name,last_name as surname from employee;
+
+Q2) Write an SQL query to display all different department IDs available in the EMPLOYEES
+table.
+ans)
+       SELECT DISTINCT department_id from EMPLOYEE;
+       
+
+Q3) Write an SQL query to display all employee details sorted by first_name in descending
+order.
+ans)
+    SELECT * FROM employee
+    ORDER BY first_name desc;
+
+Q4) Write an SQL query to display first_name, last_name, salary, and PF for all employees.
+(PF is calculated as 15% of salary.)
+ans)
+     SELECT first_name, last_name, salary ,(salary*(15/100)) As PF
+     FROM employee;
+
+Q5) Write an SQL query to display employee_id, employee names, and salary sorted in
+increasing order of salary.
+ans)
+     SELECT employee_id,first_name,last_name,salary
+     FROM EMPLOYEE
+     order BY salary asc;
+
+Q6) Write an SQL query to display the total salary payable to all employees.
+ans)
+     SELECT SUM(salary) as payable_to_emp
+     FROM employee;
+
+Q7) Write an SQL query to display the highest salary and the lowest salary from the
+EMPLOYEES table.
+ans)  
+     SELECT MAX(salary) AS max_salary,MIN(salary) AS min_salary
+     FROM employee;
+
+
+Q8) Write an SQL query to display the average salary and the total number of employees.
+ans)
+     
+      SELECT COUNT(employee_id) as total_emp,Avg(salary) as avg_salary
+      FROM employee;
+
+Q9) Write an SQL query to display the total number of employees working in the company.
+ans)
+      SELECT COUNT(employee_id) AS total_emp
+      FROM employee;
+
+
+Q10) Write an SQL query to display the number of different job roles available in the
+EMPLOYEES table.
+ans) 
+      SELECT COUNT(DISTINCT job_id)
+      FROM employee;
+
+
+Q11) Write an SQL query to display the first 10 employee records from the EMPLOYEES table.
+ans)
+     SELECT*FROM employee
+     limit 10;
+
+
+Q12) Write an SQL query to display employee names and salary for employees whose salary is less than 10000 or greater than 15000.
+ans)
+     SELECT first_name,last_name,salary
+     FROM employee
+     WHERE salary<10000 OR salary>15000;
+
+Q13) Write an SQL query to display employee names and department_id for employees working
+in department 30 and department 100.Sort the result by department_id.
+ans)
+    SELECT first_name,last_name,department_id
+    FROM employee
+    WHERE department_id=30 OR department_id=100
+    ORDER BY department_id asc;
+
+Q14) Write an SQL query to display employee names and salary for employees working in
+department 30 or 100,
+whose salary is outside the range 10000 to 15000.
+ans)
+   SELECT first_name,last_name,salary
+    FROM employee
+    WHERE 
+    (department_id=30 OR department_id=100)
+    AND
+    salary NOT BETWEEN 10000 AND 15000;
+    
+
+Q15) Write an SQL query to display employee names and hire_date for employees who were
+hired in the year 1987.
+ans)
+    SELECT first_name,last_name,join_date As hire_date
+    FROM employee
+    WHERE 
+    YEAR(join_date) = 1987;
+   // 1054 (42S22): Unknown column 'join_date' in 'field list'
+
+
+Q16) Write an SQL query to display first_name of employees whose first_name contains both
+letters 'b' and 'c'.
+ans)
+    SELECT first_name
+    FROM employee
+    WHERE first_name LIKE '%b%' AND first_name LIKE '%c%';
+
+Q17) Write an SQL query to display last_name, job role, and salary for employees who work as
+Programmer or Shipping Clerk,
+and whose salary is not equal to 4500, 10000, or 15000.
+
+
+Q18) Write an SQL query to display last_name of employees who’s last_name contains exactly 6
+characters.
+
+
+Q19) Write an SQL query to display last_name of employees having 'e' as the third character in
+their last_name.
+
+
+Q20) Write an SQL query to display all different job roles/designations available in the
+EMPLOYEES table.
+
+
+Q21) Write an SQL query to display employee details for employees who’s last_name is
+BLAKE, SCOTT, KING, or FORD.

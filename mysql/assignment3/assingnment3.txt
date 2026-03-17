@@ -1,4 +1,4 @@
-     CREATE TABLE EMPLOYEES(
+     CREATE TABLE EMPLOYEE(
       employee_id int PRIMARY KEY,
       first_name VARCHAR(30),
       last_name VARCHAR(30),
@@ -6,28 +6,28 @@
       salary DECIMAL(10,2),
       manager_id INT,
       department_id INT,
-      FOREIGN KEY (job_id) REFERENCES JOBS(job_id),
-      FOREIGN KEY (department_id) REFERENCES departments(department_id)
+      FOREIGN KEY (job_id) REFERENCES JOB(job_id),
+      FOREIGN KEY (department_id) REFERENCES department(department_id)
      );
 
-     CREATE TABLE departments(
+     CREATE TABLE department(
       department_id INT PRIMARY KEY,
       department_name VARCHAR(30),
       manager_id INT,
       location_id Int
      );
 
-     CREATE TABLE jobs(
+     CREATE TABLE job(
       job_id INT PRIMARY KEY,
       job_title VARCHAR(50),
       min_salary int,
       max_salary int
      )
 
-Q1) Write an SQL query to insert the above employee records into the EMPLOYEES table.
+Q1) Write an SQL query to insert the above employee records into the EMPLOYEE table.
 ans)
    
-    INSERT INTO EMPLOYEES 
+    INSERT INTO EMPLOYEE 
          (employee_id,first_name,last_name,job_id,salary,manager_id,department_id)
          VALUES
          (100, 'Steven', 'King', 1, 24000.00, 200, 10),
@@ -46,7 +46,7 @@ Q2) Write a single SQL INSERT statement to insert at least 3 department records 
 DEPARTMENTS table.
 ans)
     
-    INSERT INTO departments(
+    INSERT INTO department(
       department_id,
       department_name,
       manager_id,
@@ -60,7 +60,7 @@ ans)
 Q3) Write an SQL query to insert one new job record into the JOBS table ensuring duplicate
 JOB_ID is not allowed.
 ans) 
-     INSERT INTO jobs(
+     INSERT INTO job(
       job_id,
       job_title ,
       min_salary,
@@ -71,7 +71,7 @@ ans)
 
 Q4) Write an SQL query to increment the salary of each employee by 10%.
 ans)
-      UPDATE TABLE EMPLOYEES
+      UPDATE EMPLOYEE
       SET salary=salary+salary*(10/100.0);
 
 Q5) Write an SQL query to set EMAIL = 'not available' for employees whose department_id is
@@ -90,7 +90,7 @@ ans)
      update employees
      SET email='not available'
      WHERE department_id=(
-      SELECT department_id from departments
+      SELECT department_id from department
       where department_name='Purchasing'
      )
 
@@ -121,6 +121,7 @@ Q10) Write an SQL query to insert one new employee record with your own suitable
 a new employee_id).
 ans)
      INSERT INTO employees
+     (employee_id, first_name, last_name, job_id, salary, manager_id, department_id)
      VALUES
      (110,'bhushan','pawar',3,100000,103,60);
 
@@ -133,5 +134,5 @@ ans)
 Q12) Write an SQL query to delete the department record where department_id = 20 and observe
 the error if employees exist in that department.
 ans)
-      DELETE FROM departments
+      DELETE FROM department
       where department_id=20;
