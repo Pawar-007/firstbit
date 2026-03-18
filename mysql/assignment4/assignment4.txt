@@ -111,7 +111,19 @@ ans)
 Q17) Write an SQL query to display last_name, job role, and salary for employees who work as
 Programmer or Shipping Clerk,
 and whose salary is not equal to 4500, 10000, or 15000.
-
+ans)
+     select e.last_name,
+     (SELECT j.job_title
+     FROM job j
+     WHERE j.job_id=e.job_id) as title
+     ,e.salary
+     FROM EMPLOYEE e
+     WHERE (
+          SELECT job_title 
+          FROM job j
+          WHERE j.job_id=e.job_id
+     ) IN ("Programmer","Sales Manager")
+     ANd salary NOT IN (4500,10000,15000);
 
 Q18) Write an SQL query to display last_name of employees who’s last_name contains exactly 6
 characters.
