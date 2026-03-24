@@ -1,0 +1,51 @@
+Q1) Write an SQL query to list all books written by author 'Loni' with price less than 600.
+ans)
+        
+
+Q2) Write an SQL query to display issue details of books that are not returned yet.
+
+
+Q3) Write an SQL query to update all blank return_date values to '2025-12-31' excluding issue
+IDs 7005 and 7006.
+
+
+Q4) Write an SQL query to display issue details of books issued for more than 30 days.
+
+
+Q5) Write an SQL query to list all books priced between 500 and 750 and belonging to category
+'Database'.
+
+
+Q6) Write an SQL query to list all books belonging to categories Science, Database, Fiction, or
+Management.
+
+
+Q7) Write an SQL query to list all members in descending order of penalty amount.
+
+
+Q8) Write an SQL query to update book number 103 with cost = 300 and category = 'RDBMS'.
+
+
+Q9) Write an SQL query to list all books sorted by category (ascending) and price (descending).
+
+
+Q10) Write an SQL query to list all books whose name contains the word 'SQL'.
+
+
+Q11) Write an SQL query to display Lib_Issue_Id, Issue_Date, Return_Date and number of days
+the book was issued.
+
+
+Q12) Write an SQL query to list member details ordered by their joining date.
+
+
+Q13) Write an SQL query to count total books issued to member ID 1.
+
+
+Q14) Write an SQL query to display total penalty due for all members.
+
+
+Q15) Write an SQL query to display total number of members.
+
+
+Q16) Write an SQL query to display total number of books issued.

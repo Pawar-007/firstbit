@@ -125,17 +125,37 @@ ans)
      ) IN ("Programmer","Sales Manager")
      ANd salary NOT IN (4500,10000,15000);
 
+     //another approch using joins
+     SELECT e.last_name,j.job_title,e.salary
+     FROM employee e
+     INNER JOIN job j
+     ON e.job_id=j.job_id
+     WHERE j.job_title IN ("Programmer","Sales Manager")
+     AND e.salary NOT IN (4500,10000,15000);
+
 Q18) Write an SQL query to display last_name of employees who’s last_name contains exactly 6
 characters.
-
+ans)
+      SELECT last_name FROM employee
+      WHERE LENGTH(last_name)=6;
 
 Q19) Write an SQL query to display last_name of employees having 'e' as the third character in
 their last_name.
-
+ans)  
+     SELECT last_name FROM employee
+     where last_name LIKE "__e%";
 
 Q20) Write an SQL query to display all different job roles/designations available in the
 EMPLOYEES table.
-
+ans) 
+      SELECT job_title FROM job
+      where job_id IN (
+          SELECT DISTINCT job_id
+          FROM employee
+      );
 
 Q21) Write an SQL query to display employee details for employees who’s last_name is
 BLAKE, SCOTT, KING, or FORD.
+ANS)
+       SELECT*FROM employee
+       where last_name IN ("BLAKE","SCOTT","KING","FORD");
