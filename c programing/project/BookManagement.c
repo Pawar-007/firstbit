@@ -14,11 +14,15 @@ typedef struct book
 book *add(book[], int *, int *);
 void removeById(book[], int *);
 void updateBookPrice(book[], int, int);
+void updateBookRating(book[], int, int);
 void bookCategoryList(book[], char[], int);
 void searchBookBYId(book[], int, int);
 void searchBookBYName(book[], char[], int);
 void dispaly(book[], int);
-void sortBooks();
+void sortBooks(book[], int, char[],int);
+void printMenu();
+void showBookDetails(book);
+void showAutherBooks(book[],int);
 void main()
 {
    int capacity = 10;
@@ -41,14 +45,22 @@ void main()
    database[8] = (book){9, "ai basics", "stuart russell", "ai", 900, 5};
    database[9] = (book){10, "machine learning", "andrew ng", "ai", 950, 5};
    index = 10;
-
-   printf("To interact with software press key according to requirement\n");
-   printf("1 add\n2 removeById\n3 searchBook\n4 updateBookPrice\n5 Display Books\n");
+   
    while (1)
    {
-      printf("Enter a Menu : ");
+      printf("For menu press 1 OR for continue press 0\n");
+      int show;
+      scanf("%d",&show);
+      if(show){
+         printMenu();
+      }
+      else{
+         printf("Enter a choice : \n");
+      }
+      
       int choice;
       scanf("%d", &choice);
+
       switch (choice)
       {
       case 1:
@@ -73,7 +85,6 @@ void main()
             printf("Enter Book Id\n");
             scanf("%d", &bid);
             searchBookBYId(database, bid, index);
-            break;
          }
          else if (choice == 2)
          {
@@ -83,8 +94,8 @@ void main()
             fgets(bname, 30, stdin);
             bname[strcspn(bname, "\n")] = 0;
             searchBookBYName(database, bname, index);
-            break;
          }
+         break;
       }
       case 4:
       {
@@ -107,10 +118,50 @@ void main()
          int bid;
          printf("Enter Book Id\n");
          scanf("%d", &bid);
-         updateBookPrice(database, bid, index);
+         int choice;
+         printf("For Update Rating press 1\n");
+         printf("For Update price press 2\n");
+         scanf("%d",&choice);
+         if(choice==1){
+            updateBookRating(database, bid, index);
+         }
+         else if(choice==2){
+            updateBookPrice(database, bid, index);
+         }
          break;
       }
-      default:
+      case 7:
+      {
+         printf("=====================================\n");
+         printf("For sort by price press 1\n");
+         printf("For sort by rating press 2\n");
+         int num;
+         char choice[30];
+         scanf("%d",&num);
+         if(num==1){
+            strcpy(choice,"price");
+         }
+         else if(num==2){
+            strcpy(choice,"rating");
+         }
+         printf("For DESC press 1\n");
+         printf("For ASC press 2\n");
+         scanf("%d",&num);
+         sortBooks(database, index,choice,num);
+         break;
+      }
+      case 8:
+      {
+         showAutherBooks(database,index);
+         break;
+      }
+      default:{
+         printf("choose correct option\n");
+         break;
+      }
+
+      }
+      if(choice==0){
          break;
       }
    }
@@ -151,7 +202,7 @@ book *add(book database[], int *index, int *capacity)
    printf("Enter book price\n");
    scanf("%d", &temp.price);
 
-   printf("Enter book rating\n");
+   printf("Enter book rating from ) 0 to 5\n");
    scanf("%d", &temp.rating);
 
    database[(*index)++] = temp;
@@ -164,7 +215,7 @@ void removeById(book database[], int *index)
    printf("Enter Id of book : ");
    scanf("%d", &id);
    int i = 0;
-   while (i <= (*index))
+   while (i < (*index))
    {
       if (database[i].id == id)
       {
@@ -194,12 +245,7 @@ void dispaly(book database[], int size)
    for (int i = 0; i < size; i++)
    {
       printf("\n-------------------- Book %d --------------------\n", i + 1);
-      printf("ID           : %d\n", database[i].id);
-      printf("Book Name    : %s\n", database[i].bookname);
-      printf("Author Name  : %s\n", database[i].AutherName);
-      printf("Category     : %s\n", database[i].category);
-      printf("Price        : %d\n", database[i].price);
-      printf("Rating       : %d/5\n", database[i].rating);
+      showBookDetails(database[i]);
    }
 
    printf("\n=======================================================\n");
@@ -211,12 +257,7 @@ void searchBookBYId(book database[], int id, int size)
       if (database[i].id == id)
       {
          printf("\n-------------------- Book %d --------------------\n", i + 1);
-         printf("ID           : %d\n", database[i].id);
-         printf("Book Name    : %s\n", database[i].bookname);
-         printf("Author Name  : %s\n", database[i].AutherName);
-         printf("Category     : %s\n", database[i].category);
-         printf("Price        : %d\n", database[i].price);
-         printf("Rating       : %d/5\n", database[i].rating);
+         showBookDetails(database[i]);
          return;
       }
    }
@@ -224,20 +265,17 @@ void searchBookBYId(book database[], int id, int size)
 }
 void searchBookBYName(book database[], char name[], int size)
 {
+   int found=0;
    for (int i = 0; i < size; i++)
    {
       if (strcmp(database[i].bookname, name) == 0)
       {
          printf("\n-------------------- Book %d --------------------\n", i + 1);
-         printf("ID           : %d\n", database[i].id);
-         printf("Book Name    : %s\n", database[i].bookname);
-         printf("Author Name  : %s\n", database[i].AutherName);
-         printf("Category     : %s\n", database[i].category);
-         printf("Price        : %d\n", database[i].price);
-         printf("Rating       : %d/5\n", database[i].rating);
-         return;
+         showBookDetails(database[i]);
+         found=1;
       }
    }
+   if(!found)
    printf("Book Not present in list\n");
 }
 void bookCategoryList(book database[], char catogery[], int size)
@@ -249,12 +287,7 @@ void bookCategoryList(book database[], char catogery[], int size)
       {
          found = 1;
          printf("\n-------------------- Book %d --------------------\n", i + 1);
-         printf("ID           : %d\n", database[i].id);
-         printf("Book Name    : %s\n", database[i].bookname);
-         printf("Author Name  : %s\n", database[i].AutherName);
-         printf("Category     : %s\n", database[i].category);
-         printf("Price        : %d\n", database[i].price);
-         printf("Rating       : %d/5\n", database[i].rating);
+         showBookDetails(database[i]);
       }
    }
    if (!found)
@@ -271,7 +304,7 @@ void updateBookPrice(book database[], int id, int index)
    int i = 0;
    while (i < index && database[i].id != id)
       i++;
-   if (i > index)
+   if (i == index)
    {
       printf("Book id not present \n");
       return;
@@ -279,10 +312,135 @@ void updateBookPrice(book database[], int id, int index)
    database[i].price = newPrice;
    printf("Book price is updated\n");
    printf("\n-------------------- Book %d --------------------\n", i + 1);
-   printf("ID           : %d\n", database[i].id);
-   printf("Book Name    : %s\n", database[i].bookname);
-   printf("Author Name  : %s\n", database[i].AutherName);
-   printf("Category     : %s\n", database[i].category);
-   printf("Price        : %d\n", database[i].price);
-   printf("Rating       : %d/5\n", database[i].rating);
+   showBookDetails(database[i]);
+}
+void updateBookRating(book database[], int id, int index)
+{
+   int rating;
+   getchar();
+   printf("Enter new Rating\n");
+   scanf("%d", &rating);
+   int i = 0;
+   while (i < index && database[i].id != id)
+      i++;
+   if (i > index)
+   {
+      printf("Book id not present \n");
+      return;
+   }
+   database[i].rating = rating;
+   printf("Book rating is updated\n");
+   printf("\n-------------------- Book %d --------------------\n", i + 1);
+   showBookDetails(database[i]);
+}
+void printMenu()
+{
+   printf("=====================================\n");
+   printf("BOOK MANAGEMENT SYSTEM\n\n");
+   printf("1. Add New Book\n");
+   printf("2. Remove Book (By ID)\n");
+   printf("3. Search Book\n");
+   printf("4. Display Books by Category\n");
+   printf("5. Display All Books\n");
+   printf("6. Update Book\n");
+   printf("7. Show Books(High Price to Low)\n");
+   printf("8. Dispaly Auther Books\n");
+   printf("0. Exit\n");
+   printf("=====================================\n");
+   printf("Enter your choice: ");
+}
+void showBookDetails(book bookdata){
+   printf("ID           : %d\n", bookdata.id);
+   printf("Book Name    : %s\n", bookdata.bookname);
+   printf("Author Name  : %s\n", bookdata.AutherName);
+   printf("Category     : %s\n", bookdata.category);
+   printf("Price        : %d\n", bookdata.price);
+   printf("Rating       : %d/5\n", bookdata.rating);
+}
+void sortBooks(book database[], int index, char choice[], int order)
+{
+      book temp[index];
+      for (int i = 0; i < index; i++)
+      {
+         temp[i]=database[i];
+      }
+      if(strcmp(choice,"price")==0){
+            if(order==1){
+               for (int i = index - 1; i > 0; i--)
+               {
+                  for (int j = 0; j < i; j++)
+                  {
+                     if (temp[j].price < temp[j + 1].price)
+                     {
+                        book x = temp[j];
+                        temp[j] = temp[j + 1];
+                        temp[j + 1] = x;
+                     }
+                  }
+               }
+            }
+            else if(order==2){
+               for(int i=index-1;i>0;i--)
+               {
+                  for (int j=0;j<i;j++)
+                  {
+                     if (temp[j].price>temp[j + 1].price)
+                     {
+                        book x=temp[j];
+                        temp[j]=temp[j + 1];
+                        temp[j+1] = x;
+                     }
+                  }
+               }
+            }
+      }
+      else if(strcmp(choice,"rating") == 0)
+      {
+         if(order == 1)
+         {
+            for(int i=index-1;i>0;i--)
+            {
+               for (int j=0;j<i;j++)
+               {
+                  if (temp[j].rating<temp[j+1].rating)
+                  {
+                     book x=temp[j];
+                     temp[j]=temp[j+1];
+                     temp[j+1]=x;
+                  }
+               }
+            }
+         }
+         else if (order==2)
+         {
+            for (int i=index-1;i>0;i--)
+            {
+               for (int j=0;j<i;j++)
+               {
+                  if (temp[j].rating > temp[j + 1].rating)
+                  {
+                     book x = temp[j];
+                     temp[j] = temp[j+1];
+                     temp[j+1]=x;
+                  }
+               }
+            }
+         }
+      }
+     for(int i=0;i<index;i++){
+        printf("=====================================\n");
+        showBookDetails(temp[i]);
+     }
+}
+void showAutherBooks(book database[], int index){
+   char auther[30];
+   getchar();
+   printf("Enter Auther name : ");
+   fgets(auther,30,stdin);
+   auther[strcspn(auther,"\n")]=0;
+   for(int i=0;i<index;i++){
+      if(strcmp(auther,database[i].AutherName)==0){
+         showBookDetails(database[i]);
+      }
+   }
 }
