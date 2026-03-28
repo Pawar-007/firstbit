@@ -48,15 +48,8 @@ void main()
    
    while (1)
    {
-      printf("For menu press 1 OR for continue press 0\n");
-      int show;
-      scanf("%d",&show);
-      if(show){
-         printMenu();
-      }
-      else{
-         printf("Enter a choice : \n");
-      }
+      printMenu();
+     
       
       int choice;
       scanf("%d", &choice);
@@ -181,7 +174,7 @@ book *add(book database[], int *index, int *capacity)
    {
       if (database[i].id == temp.id)
       {
-         printf("Book Id is All ready present in database\n");
+         printf("Book Id is All ready present in database so for new book Enter UNIQUE id\n");
          return database;
       }
    }
@@ -201,9 +194,43 @@ book *add(book database[], int *index, int *capacity)
 
    printf("Enter book price\n");
    scanf("%d", &temp.price);
-
-   printf("Enter book rating from ) 0 to 5\n");
+   while(temp.price<0){
+      printf("Enter valid price or For cancel Enter 0\n");
+      int choice;
+      scanf("%d",&choice);
+      if(choice==0){
+         return database;
+      }
+      else if(choice>0){
+         temp.price=choice;
+      }
+      else{
+         printf("Invalid input!\n");
+      }
+   }
+   
+   printf("Enter book rating from 0 to 5\n");
    scanf("%d", &temp.rating);
+  
+   while (temp.rating < 0 || temp.rating>5)
+   {
+      printf("Enter valid rating between 0 to 5 or For cancel Enter -1\n");
+      int choice;
+      scanf("%d", &choice);
+      if (choice == -1)
+      {
+         return database;
+      }
+      else if (choice>=0 && choice<=5)
+      {
+         temp.rating = choice;
+      }
+      else
+      {
+         printf("Invalid input!\n");
+      }
+   }
+
 
    database[(*index)++] = temp;
    printf("Book Addes successfully\n");
@@ -268,7 +295,7 @@ void searchBookBYName(book database[], char name[], int size)
    int found=0;
    for (int i = 0; i < size; i++)
    {
-      if (strcmp(database[i].bookname, name) == 0)
+      if (strstr(database[i].bookname, name) != NULL)
       {
          printf("\n-------------------- Book %d --------------------\n", i + 1);
          showBookDetails(database[i]);
