@@ -343,7 +343,7 @@ void printMenu()
    printf("4. Display Books by Category\n");
    printf("5. Display All Books\n");
    printf("6. Update Book\n");
-   printf("7. Show Books(High Price to Low)\n");
+   printf("7. Sort Books\n");
    printf("8. Dispaly Auther Books\n");
    printf("0. Exit\n");
    printf("=====================================\n");
