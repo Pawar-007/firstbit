@@ -3,6 +3,13 @@ class Admin{
    String name;
    double salary,allounce;
    
+   Admin(){
+      this.id=1;
+      this.name="admin";
+      this.salary=3000;
+      this.allounce=1000;
+   }
+
    void setId(int id){
       this.id=id;
    }

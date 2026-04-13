@@ -1,6 +1,12 @@
 public class Student {
    int rollNo,marks;
    String name;
+
+   Student(){
+      this.rollNo=1;
+      this.marks=200;
+      this.name="std";
+   }
    void setRollNo(int rollNo){
       this.rollNo=rollNo;
    }

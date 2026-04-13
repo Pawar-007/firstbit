@@ -1,51 +1,163 @@
 Q1) Write an SQL query to list all books written by author 'Loni' with price less than 600.
 ans)
-        
+        SELECT*From books
+        where Author_Name="Loni"
+        AND cost<600;
 
 Q2) Write an SQL query to display issue details of books that are not returned yet.
-
+ans) 
+         SELECT*FROM issue
+         WHERE Return_Date is NULL;
+       
 
 Q3) Write an SQL query to update all blank return_date values to '2025-12-31' excluding issue
 IDs 7005 and 7006.
-
+ans)  UPDATE issue
+      SET return_date='2025-12-31'
+      WHERE return_date IS NULL AND
+      Lib_Issue_Id NOT IN(7005,7006);
 
 Q4) Write an SQL query to display issue details of books issued for more than 30 days.
+ans) SELECT*FROM issue
+     WHERE DATEDIFF(return_date,Issue_Date)>30;
 
 
 Q5) Write an SQL query to list all books priced between 500 and 750 and belonging to category
 'Database'.
+ans) SELECT*FROM books
+     WHERE category='Database' AND
+     cost between 500 AND 750;
 
 
 Q6) Write an SQL query to list all books belonging to categories Science, Database, Fiction, or
 Management.
-
+ans)    SELECT*FROM books
+        WHERE category IN ('Science','Database','Fiction');
 
 Q7) Write an SQL query to list all members in descending order of penalty amount.
-
+ans)   SELECT*FROM member
+       order BY  Penalty_Amount desc;
 
 Q8) Write an SQL query to update book number 103 with cost = 300 and category = 'RDBMS'.
-
+ans)   UPDATE books
+       SET cost=300,category='RDBMS'
+       WHERE Book_no=103;
 
 Q9) Write an SQL query to list all books sorted by category (ascending) and price (descending).
-
+ans)  SELECT*FROM books
+      order by category asc,cost desc;
 
 Q10) Write an SQL query to list all books whose name contains the word 'SQL'.
-
+ans)  SELECT*FROM books
+      where Book_Name LIKE "%SQL%";
 
 Q11) Write an SQL query to display Lib_Issue_Id, Issue_Date, Return_Date and number of days
 the book was issued.
-
+ans) SELECT Lib_Issue_Id,Issue_Date,return_date,DATEDIFF(return_date,       Issue_Date) AS days FROM issue;
 
 Q12) Write an SQL query to list member details ordered by their joining date.
-
+ans) SELECT*FROM member
+     ORDER BY Acc_Open_date asc;
 
 Q13) Write an SQL query to count total books issued to member ID 1.
-
+ans)   SELECT COUNT(Book_no) AS count FROM issue
+       WHERE Member_Id=1;
+      
 
 Q14) Write an SQL query to display total penalty due for all members.
-
+ans)  SELECT SUM(Penalty_Amount) FROM member;
 
 Q15) Write an SQL query to display total number of members.
-
+ans) SELECT COUNT(Member_Id) FROM member;
 
 Q16) Write an SQL query to display total number of books issued.
+ans) SELECT COUNT(Lib_Issue_Id) FROM issue;
+
+Q17) Write an SQL query to display average membership fees paid by all members.
+ans)  SELECT AVG(Penalty_Amount) FROM member;
+
+Q18) Write an SQL query to display each category and number of books in that category.
+ans)  SELECT category,COUNT(Book_No)
+      FROM books
+      GROUP BY category;
+
+Q19) Write an SQL query to display book_no and number of times each book is issued, sorted
+by count descending.
+ans)  SELECT Book_No,COUNT(Lib_Issue_Id) AS issued
+      FROM issue
+      GROUP BY Book_No
+      ORDER BY issued desc;
+
+Q20) Write an SQL query to display maximum, minimum, total and average penalty amount
+from Member table.
+and)   SELECT MAX(Penalty_Amount) AS max_penelty,
+              MIN(Penalty_Amount) AS min_penelty,
+              sum(Penalty_Amount) AS total_penelty,
+              AVG(Penalty_Amount) AS avg_penelty
+      FROM (
+         SELECT * FROM member
+         WHERE Penalty_Amount IS NOT NULL
+      ) AS member;
+Q21) Write an SQL query to display member IDs who have issued more than 2 books.
+ans)  SELECT member_id FROM issue
+      GROUP BY  Member_Id
+      HAVING COUNT(Member_Id)>=2;
+
+Q22) Write an SQL query to display member_id, book_no and number of times the same book
+was issued by that member.
+ans)  
+      SELECT member_id,book_no,COUNT(book_no) FROM issue
+      GROUP BY member_id,book_no;
+        
+Q23) Write an SQL query to display month-wise count of books issued, sorted by count
+descending.
+ans)  SELECT MONTH(Issue_Date),COUNT(Lib_Issue_Id)
+      FROM issue
+      GROUP BY MONTH(Issue_Date);
+
+Q24) Write an SQL query to list book numbers of books that have never been issued.
+ans)   SELECT Book_No FROM books
+       WHERE Book_No NOT IN (
+            SELECT DISTINCT Book_No FROM issue
+       );
+
+Q25) Write an SQL query to list member IDs who exist in Member table and have issued at least
+one book.
+ans)   SELECT * FROM member
+       WHERE member_id IN (
+            SELECT DISTINCT member_id FROM issue
+       )
+
+Q26) Write an SQL query to display member ID with highest and lowest number of books
+issued.
+ans)  
+       SELECT member_id,COUNT(Lib_Issue_Id) as eachTable
+       FROM issue
+       GROUP BY member_id
+       HAVING eachTable=(
+            SELECT MAX(issue.eachIssue) FROM (
+            SELECT member_id,COUNT(Lib_Issue_Id) as eachIssue
+            FROM issue
+            GROUP BY member_id
+            )issue
+       ) OR
+       eachTable=(
+            SELECT MIN(issue.eachIssue) FROM (
+            SELECT member_id,COUNT(Lib_Issue_Id) as eachIssue
+            FROM issue
+            GROUP BY member_id
+            )issue
+       )
+       ORDER BY eachTable desc;
+
+       
+       
+
+
+Q27) Write an SQL query to list issue details for books issued in December or July.
+Q28) Write an SQL query to display Book_No, Book_Name and Issue_Date for books issued in
+December and belonging to category Database.
+Q29) Write an SQL query to display Member_Id, Member_Name and Max_Books_Allowed
+sorted by Max_Books_Allowed descending.
+Q30) Write an SQL query to list Book_No, Book_Name, Issue_Date and Return_Date for all
+books issued by member 'Richa Sharma'.

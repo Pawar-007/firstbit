@@ -3,6 +3,14 @@ class Date{
    int month;
    int year;
    String dow;
+
+   Date(){
+      this.day=1;
+      this.month=1;
+      this.year=2004;
+      this.dow="friday"l
+   }
+
    void setDay(int day){
       this.day=day;
    }
