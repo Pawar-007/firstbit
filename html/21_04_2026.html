@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Document</title>
+   <script>
+      document.addEventListener("DOMContentLoaded",()=>{
+         document.getElementById("btn1").addEventListener("click",()=>{
+            document.getElementById("heading").innerText="Button Clicked!"
+         })
+
+         document.getElementById("btn3").addEventListener("click",()=>{
+            let value=document.querySelector("#textInput").value
+            console.log(value)
+         })
+          let tog = false;
+         function tagleColor(){
+            if(!tog){
+               let x = document.getElementById("para")
+               x.style.color = "red";
+               x.style.background = "yellow";
+            }else{
+               let x = document.getElementById("para")
+               x.style.color = "black";
+               x.style.background = "white";
+            }
+            tog=!tog;
+         }
+         document.getElementById("btn2").addEventListener("click",tagleColor);
+
+         let temp=document.getElementById("textInput");
+         temp.addEventListener("input",()=>{
+            console.log(temp.value);
+         })
+
+         let temp2 = document.getElementById("box")
+         temp2.addEventListener("mouseover", () => {
+            temp2.style.borderColor = "red";
+         })
+         temp2.addEventListener("mouseout", () => {
+            temp2.style.borderColor = "black";
+         })
+
+         let ele=document.createElement("<button>click mc <button/>")
+         document.getElementById("btn2").append(ele);
+      })
+      
+   </script>
+</head>
+<body>
+      <h1 id="heading">Welcome to JS Practice</h1>
+   
+      <p id="para">
+         This is a simple paragraph. Try to manipulate me using JavaScript.
+      </p>
+   
+      <input type="text" id="textInput" placeholder="Type something here">
+   
+      <button id="btn1">Click Me</button>
+      <button id="btn2">Change Color</button>
+      <button id="btn3">Show Input</button>
+   
+      <div id="box" style="width:200px;height:100px;border:1px solid black;margin-top:10px;">
+         Hover over me
+      </div>
+   
+   </body>
+   <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum facere expedita asperiores? Obcaecati voluptatem ducimus laudantium laboriosam accusamus dicta sapiente, modi, perferendis quos repellat ratione consequatur voluptate temporibus rerum molestias. Id rerum eum soluta sint commodi molestiae fuga, earum ratione tempora voluptates provident maiores repellat laboriosam accusantium assumenda, distinctio nam, maxime dolore tempore ipsa cum reiciendis dolor. Cupiditate omnis debitis accusamus earum at quod et, laborum aspernatur nam voluptates animi quos saepe molestiae dolore voluptatem quidem soluta sit sapiente voluptas quo. Nulla ut, neque fugit iusto commodi temporibus assumenda sapiente facere architecto possimus nam accusamus cum, sit iure alias eaque perferendis! Necessitatibus inventore optio incidunt. At qui sapiente cupiditate quam laudantium quidem tempora suscipit, atque quaerat dicta nemo in ducimus corporis eaque debitis hic error obcaecati. Impedit qui, voluptates ex saepe ullam maiores soluta sint odio officia? Ut cupiditate doloribus molestiae, tenetur perspiciatis aliquam praesentium quae quaerat culpa neque explicabo veniam perferendis minima nam laborum eligendi nobis ratione porro numquam ex, excepturi atque amet! Non, facilis! Cumque voluptatum quam dolores quibusdam, beatae eaque sed, porro nostrum saepe magnam officiis blanditiis minus repellendus rem ea voluptatibus. Ducimus similique suscipit fugit id quam voluptates doloribus fuga. Incidunt temporibus ad sapiente animi quas pariatur culpa nobis necessitatibus quis accusantium odit reprehenderit sint aperiam tenetur voluptas fugiat officia consectetur delectus voluptatem blanditiis, dolor, soluta id ab. Saepe assumenda expedita, numquam blanditiis voluptates adipisci libero quibusdam ducimus eum accusamus itaque iste nesciunt quidem. Aliquam voluptatem inventore quas omnis a sequi modi, iure dolore eius, qui sapiente praesentium enim reprehenderit possimus. Cum nemo animi aliquid voluptates atque. Nihil magni voluptas nemo fuga ullam nobis quis voluptatem! Aut nostrum tempore perferendis, veritatis dicta vero velit, repellendus in voluptas, aliquid voluptatibus dolorum. Incidunt recusandae odio doloremque. Et atque sequi cumque dolores praesentium rerum sint commodi quos culpa inventore hic optio consequuntur in earum laborum doloribus, soluta consectetur, exercitationem voluptas? Repellendus autem officia mollitia incidunt perspiciatis asperiores at magnam dolore voluptate laborum ex corporis fugit illo dolorum, vero recusandae natus quasi minima aliquam quae expedita pariatur deleniti? Ducimus quidem aliquid blanditiis placeat labore quos sunt, recusandae praesentium cum expedita, ipsam eius dolorum! Eveniet expedita minus nemo maxime illum quod unde beatae facere ipsa cupiditate sit harum aut veritatis, odio sequi voluptatum saepe doloribus consequuntur! Nihil, dicta impedit error earum suscipit facilis? Ratione, sunt odit culpa corrupti doloribus earum alias dolorem ipsum adipisci vitae expedita maiores repellat est in! Hic in sint magnam magni temporibus dolores rem ipsa sit quis doloribus deleniti quos reiciendis eos commodi ab eius maxime, provident ipsum amet pariatur ut voluptas sed natus est. Ipsam temporibus vel quisquam atque, blanditiis iste ab voluptate odit incidunt ducimus hic aspernatur autem earum, fugiat iusto tempora! Nesciunt obcaecati eius reprehenderit sint beatae, repudiandae itaque facilis temporibus. Ut atque, soluta dolorum accusantium id amet voluptatum eveniet sed optio dolores dicta tenetur. Dolorem ex earum magnam libero, minima quam laudantium neque distinctio exercitationem consequuntur excepturi veritatis fugiat temporibus unde autem sed, accusantium magni! Laboriosam ab, rem aliquid dolores in praesentium consectetur inventore vero, quos quaerat voluptatibus quas harum repudiandae magni impedit nostrum! Aut recusandae laborum fugiat inventore optio ratione saepe eligendi, molestias possimus tempore quasi atque vel perspiciatis rem esse laudantium. Sequi molestiae numquam similique necessitatibus ea neque sunt nihil laudantium aliquid tempore quo, esse molestias quidem rerum expedita quis harum consequatur sed quas porro blanditiis! Delectus vero beatae alias aliquid earum laudantium, distinctio aspernatur, nemo vitae possimus culpa non temporibus deserunt. Repudiandae possimus qui quisquam distinctio magni veniam rem fuga, facilis molestiae adipisci sequi nam voluptatibus cum ab! Nisi quae rerum reiciendis odit officiis culpa, quis vitae natus nulla repudiandae maxime possimus ex nesciunt temporibus neque ipsum nemo doloribus quisquam id voluptatem harum reprehenderit perspiciatis impedit. Fugiat similique nemo perferendis, alias nostrum reprehenderit sit consequuntur cupiditate quasi voluptatibus, repudiandae aliquam adipisci amet eligendi excepturi! Odit nostrum dolores qui sunt eius ipsam doloremque, officiis in aliquid quos mollitia rem exercitationem iure vero ut veritatis quae unde quibusdam, adipisci porro ad. Optio adipisci culpa laborum. Perferendis qui, in officiis aperiam voluptatum fugit neque quae sint similique nostrum alias voluptates suscipit unde eum earum, magni, veniam facere dicta molestias! Repellat, atque dolorum illum inventore maiores quos quas cupiditate sed distinctio, minus a earum ducimus facere quidem eos omnis odit dicta natus, vel repudiandae ratione doloribus eveniet quia! A ea voluptatum cupiditate officia consectetur ullam, labore deleniti impedit dicta sunt quo! Vero accusamus hic explicabo repellendus. Numquam, sunt odio debitis nam quia neque deserunt quasi sit officia nisi architecto, corporis voluptatem voluptatibus aliquid voluptatum temporibus velit reprehenderit laudantium at corrupti cupiditate ipsum animi nulla facilis. Vero molestiae, ipsam minima tempore quae fugiat laborum ducimus facere maxime quia sed eum. Reiciendis delectus eius vel alias aperiam, rem aspernatur laboriosam ullam iste ipsam dolorum, dolores vero iure fuga debitis illo magnam. Nobis maxime itaque ex accusamus? Ex perspiciatis laboriosam eveniet deleniti magnam atque culpa tempora nam voluptates laborum, impedit debitis quaerat dolores ea voluptatem beatae commodi corporis natus odit consequatur ipsum. Aperiam, nulla accusantium corrupti culpa laboriosam vel aut voluptatum enim esse consequuntur ab corporis, mollitia blanditiis placeat eum reiciendis in ducimus fugit iusto eligendi expedita! Provident veniam molestias ducimus neque cupiditate dolores molestiae voluptas dolorum vel voluptatibus nobis minus consequuntur vero obcaecati, necessitatibus corporis distinctio quia. Voluptatibus dicta beatae animi rem blanditiis. Reiciendis corporis quaerat nisi numquam, alias atque nesciunt labore praesentium nemo, quasi, eligendi quod autem officiis consequatur. Architecto incidunt mollitia itaque animi molestias nobis esse minima assumenda nulla sint hic molestiae aspernatur, amet dolorem rerum aliquid? Assumenda, quasi! Voluptas eius dolor voluptatibus excepturi illum ducimus iusto aliquam expedita laborum illo pariatur quibusdam, sint, necessitatibus, quisquam similique numquam! Assumenda tenetur ducimus qui a eaque tempora nobis ratione suscipit magnam omnis labore earum atque, maiores error neque debitis exercitationem accusantium amet nesciunt enim ipsum non perferendis quis doloribus. Vero vitae esse cumque beatae odio obcaecati soluta tenetur dignissimos ducimus commodi eos odit aut possimus consectetur amet fugit, dolor sapiente, suscipit aperiam autem pariatur, praesentium voluptatem. Modi officia corrupti quos facere quas eaque neque cupiditate natus?</p>
+</body>
+</html>

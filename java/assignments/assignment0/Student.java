@@ -33,11 +33,13 @@ public class Student {
 class Students{
    public static void main(String[] args) {
       Student s1=new Student();
-      s1.setRollNo(12);
-      s1.setName("pankaj");
-      s1.setMarks(23);
-      s1.getRollNo();
-      s1.getName();
-      s1.getMarks();
+      System.out.println(s1.toString());
+      Object.finilize()
+      // s1.setRollNo(12);
+      // s1.setName("pankaj");
+      // s1.setMarks(23);
+      // s1.getRollNo();
+      // s1.getName();
+      // s1.getMarks();
    }
 }
