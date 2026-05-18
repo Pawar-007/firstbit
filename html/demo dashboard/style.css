@@ -1,0 +1,149 @@
+body {
+   margin: 0;
+   font-family: Arial;
+}
+
+/* MAIN LAYOUT */
+.dashboard {
+   display: grid;
+   grid-template-columns: 250px 1fr;
+   height: 100vh;
+}
+
+/* SIDEBAR */
+.sidebar {
+   background: #111;
+   color: white;
+   padding: 20px;
+   display: flex;
+   flex-direction: column;
+   gap: 10px;
+}
+
+.sidebar button {
+   padding: 10px;
+   border: none;
+   cursor: pointer;
+   background: #222;
+   color: white;
+   text-align: left;
+}
+
+.sidebar button:hover {
+   background: #444;
+}
+
+.logout {
+   margin-top: auto;
+   background: red !important;
+}
+
+/* RIGHT SIDE */
+.content {
+   padding: 20px;
+   overflow-y: auto;
+   background: #f5f6fa;
+}
+
+/* SECTIONS */
+.section {
+   display: none;
+}
+
+.section.active {
+   display: block;
+}
+
+/* TOPBAR */
+.topbar {
+   margin-bottom: 20px;
+}
+
+/* CARDS */
+.cards {
+   display: grid;
+   grid-template-columns: repeat(4, 1fr);
+   gap: 15px;
+}
+
+.card {
+   background: white;
+   padding: 20px;
+   border-radius: 12px;
+
+   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+
+   transition: 0.3s;
+}
+
+.card:hover {
+   transform: translateY(-5px);
+}
+
+.card h3 {
+   margin: 0;
+   color: #555;
+   font-size: 18px;
+}
+
+.card p {
+   margin-top: 15px;
+   font-size: 32px;
+   font-weight: bold;
+   color: #1e90ff;
+}
+
+.card:nth-child(1) p {
+   color: #1e90ff;
+}
+
+.card:nth-child(2) p {
+   color: green;
+}
+
+.card:nth-child(3) p {
+   color: orange;
+}
+
+.card:nth-child(4) p {
+   color: red;
+}
+
+/* BOX */
+.box {
+   margin-top: 20px;
+   background: white;
+   padding: 15px;
+   border-radius: 10px;
+}
+
+/* GRAPH */
+.graph {
+   height: 200px;
+   background: #ddd;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   margin-top: 10px;
+}
+
+/* TABLE */
+table {
+   width: 100%;
+   border-collapse: collapse;
+   margin-top: 10px;
+}
+
+th,
+td {
+   padding: 10px;
+   border: 1px solid #ccc;
+}
+.sidebar button.active {
+   background: #1e90ff;
+   color: white;
+}

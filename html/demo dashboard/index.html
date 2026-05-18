@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8" />
+   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+   <title>Admin Dashboard</title>
+   <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+   <div class="dashboard">
+
+      <!-- LEFT SIDEBAR -->
+      <div class="sidebar">
+         <h2>Admin Panel</h2>
+
+         <button onclick="showSection('dashboard', this)" class="active">Dashboard</button>
+         <button onclick="showSection('employee', this)">Employee</button>
+         <button onclick="showSection('addEmployee', this)">Add Employee</button>
+         <button onclick="showSection('attendance', this)">Attendance</button>
+         <button onclick="showSection('payrole', this)">Payrole</button>
+         <button onclick="showSection('report', this)">Report</button>
+         <button onclick="showSection('setting', this)">Setting</button>
+         <button class="logout">Logout</button>
+      </div>
+
+      <!-- RIGHT CONTENT -->
+      <div class="content">
+
+         <!-- DASHBOARD -->
+         <div id="dashboard" class="section active">
+
+            <div class="topbar">
+               <h1>Dashboard</h1>
+               <p>Home / Admin</p>
+            </div>
+
+            <!-- CARDS -->
+            <div class="cards">
+            
+               <div class="card">
+                  <h3>Total Employees</h3>
+                  <p>120</p>
+               </div>
+            
+               <div class="card">
+                  <h3>Departments</h3>
+                  <p>8</p>
+               </div>
+            
+               <div class="card">
+                  <h3>Attendance</h3>
+                  <p>95%</p>
+               </div>
+            
+               <div class="card">
+                  <h3>Revenue</h3>
+                  <p>₹50,000</p>
+               </div>
+            
+            </div>
+            <!-- GRAPH -->
+            <div class="box">
+               <h3>Employee Performance Analytics</h3>
+               <div class="graph">[ Graph Area ]</div>
+            </div>
+
+            <!-- TABLE -->
+            <div class="box">
+               <h3>Recent Employee Activity</h3>
+
+               <table>
+                  <tr>
+                     <th>ID</th>
+                     <th>Name</th>
+                     <th>Action</th>
+                  </tr>
+                  <tr>
+                     <td>1</td>
+                     <td>Bhushan</td>
+                     <td>Login</td>
+                  </tr>
+                  <tr>
+                     <td>2</td>
+                     <td>John</td>
+                     <td>Logout</td>
+                  </tr>
+                  <tr>
+                     <td>3</td>
+                     <td>Harshal</td>
+                     <td>logout</td>
+                  </tr>
+               </table>
+            </div>
+
+         </div>
+
+         <!-- EMPLOYEE -->
+         <div id="employee" class="section">
+            <h1>Employee Section</h1>
+         </div>
+
+         <!-- ADD EMPLOYEE -->
+         <div id="addEmployee" class="section">
+            <h1>Add Employee Form</h1>
+         </div>
+
+         <!-- ATTENDANCE -->
+         <div id="attendance" class="section">
+            <h1>Attendance Page</h1>
+         </div>
+
+         <!-- REPORT -->
+         <div id="report" class="section">
+            <h1>Reports</h1>
+         </div>
+
+         <!-- SETTING -->
+         <div id="setting" class="section">
+            <h1>Settings</h1>
+         </div>
+         
+         <div id="payrole" class="section">
+            <h1>Payrole</h1>
+         </div>
+
+      </div>
+
+   </div>
+
+   <script src="script.js"></script>
+</body>
+
+</html>

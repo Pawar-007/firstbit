@@ -60,7 +60,7 @@ const streakVal        = document.querySelector('#streakVal');
    ====================================================== */
 
 // Subject data — ek array of objects
-const subjects = [
+let subjects = [
   { name: 'Math',     percent: 88, color: '#4f46e5' },
   { name: 'Science',  percent: 72, color: '#10b981' },
   { name: 'English',  percent: 65, color: '#f59e0b' },
@@ -68,6 +68,13 @@ const subjects = [
   { name: 'History',  percent: 55, color: '#8b5cf6' },
 ];
 
+function addSub(){
+  let sub=prompt("enter subject");
+  let percentage=prompt("Enter percentage");
+  let data={name:sub,percentage:percentage,color:'#8b5cf6'}
+  subjects.push(data);
+  renderSubjects();
+}
 // Motivational quotes — array of strings
 const quotes = [
   '"Mehnat karo, result zaroor milega."',
@@ -88,14 +95,15 @@ let tasksDoneCount = 0;
    ====================================================== */
 
 // Time ke hisaab se greeting
+//let nameOfStudent=prompt("Enter Name of Student");
 function setGreeting() {
-  const hour = new Date().getHours();
+  let hour = new Date().getHours();
   let msg = '';
   if (hour < 12)       msg = 'Suprabhat 🌅';
   else if (hour < 17)  msg = 'Namaskar 🌤️';
   else                 msg = 'Shubh Sandhya 🌙';
   // DOM change: textContent se text badalna
-  greetingEl.textContent = `${msg}, Student! 👋`;
+  greetingEl.textContent = `${msg}, "sdhjcd! 👋`;
 }
 
 setGreeting();
@@ -130,7 +138,7 @@ function renderSubjects() {
   }, 300);
 }
 
-renderSubjects();
+renderSubjects(); 
 
 
 /* ======================================================
@@ -384,3 +392,16 @@ allStatCards.forEach(function(card) {
    ====================================================== */
 
 console.log('✅ app.js load ho gaya! Student Dashboard ready hai.');
+
+    let x = document.getElementById("attendanceVal");
+  let num = parseInt(x.textContent);
+  let card = document.getElementById("attendanceStat");
+  if(num<75){
+    x.style.color="red"
+     card.style.border="2px solid red"
+  }
+  else{
+     x.style.color="green"
+     card.style.border="2px solid green"
+     
+  }

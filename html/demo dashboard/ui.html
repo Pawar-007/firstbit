@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8" />
+   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+   <title>Dashboard</title>
+
+   <style>
+      body {
+         margin: 0;
+         font-family: Arial, sans-serif;
+         overflow: hidden;
+      }
+
+      /* MAIN LAYOUT */
+      .dashboard {
+         display: grid;
+         grid-template-columns: 250px 1fr;
+         /* left + right */
+         height: 100vh;
+      }
+
+      /* LEFT SIDE */
+      .part1 {
+         background: black;
+         color: white;
+         padding: 20px;
+         height: 100vh;
+      }
+
+      /* RIGHT SIDE */
+      .part2 {
+         background: white;
+         padding: 20px;
+         overflow-y: auto;  
+         display: grid;
+         grid-template-rows: auto auto 1fr;
+         /* heading, card, table */
+         gap: 15px;
+      }
+
+      .heading {
+         background: #f4f4f4;
+         padding: 15px;
+         border-radius: 8px;
+         font-size: 18px;
+         font-weight: bold;
+      }
+
+      .card {
+         background: #e9f0ff;
+         padding: 15px;
+         border-radius: 8px;
+      }
+
+      .table {
+            display: inline-block;    /* important: size depends on content */
+            border: 1px solid #ddd;
+            padding: 10px;
+            border-radius: 8px;
+            background: #fff;
+
+            width: fit-content;       /* grows with table */
+            /* responsive safety */
+            }
+
+      table {
+            border-collapse: collapse;
+            
+      }
+
+      th,
+      td {
+         border: 1px solid #ccc;
+         padding: 10px;
+         text-align: left;
+      }
+
+      th {
+         background: #f5f5f5;
+      }
+      .container {
+         display: flex;
+         padding: 50px;
+         border: 2px solid black;
+         }
+      
+   </style>
+</head>
+
+<body>
+   <div class="dashboard">
+
+      <!-- LEFT SIDEBAR -->
+      <div class="part1">
+         <h2>Dashboard</h2>
+         <button>Dashboard</button>
+         <button>Profile</button>
+         <button>Settings</button>
+      </div>
+
+      <!-- RIGHT CONTENT -->
+      <div class="part2">
+
+         <div class="heading">
+            Dashboard Overview
+         </div>
+
+         <div class="card">
+            Welcome Card / Stats here
+         </div>
+         <div class="container">
+            <div class="table">
+               <table>
+                  <tr>
+                     <th>ID</th>
+                     <th>Name</th>
+                  </tr>
+                  <tr>
+                     <td>1</td>
+                     <td>Bhushan</td>
+                  </tr>
+                  <tr>
+                     <td>2</td>
+                     <td>John</td>
+                  </tr>
+               </table>
+            </div>
+         </div>
+      </div>
+
+   </div>
+</body>
+
+</html>
