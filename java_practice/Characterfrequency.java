@@ -2,7 +2,7 @@ package java_practice;
 
 public class Characterfrequency {
    public static void main(String[] args) {
-      String st="hellop";
+      String st="hellopppppererererer";
       int[] frequency=new int[26];
       for(int i=0;i<st.length();i++){
          frequency[st.charAt(i)-'a']++;
